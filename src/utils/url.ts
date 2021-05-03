@@ -173,7 +173,7 @@ export function isPDF(url: string) {
     return false;
 }
 
-export function isURLEnabled(url: string, userSettings: UserSettings, {isProtected, isInDarkList}) {
+export function isURLEnabled(url: string, userSettings: UserSettings, {isProtected}) {
     if (isProtected && !userSettings.enableForProtectedPages) {
         return false;
     }
@@ -187,8 +187,8 @@ export function isURLEnabled(url: string, userSettings: UserSettings, {isProtect
     // TODO: Use `siteListEnabled`, `siteListDisabled`, `enabledByDefault` options.
     // Delete `siteList` and `applyToListedOnly` options, transfer user's values.
     const isURLInEnabledList = isURLInList(url, userSettings.siteListEnabled);
-    if (isURLInEnabledList && isInDarkList) {
+    if (isURLInEnabledList) {
         return true;
     }
-    return (!isInDarkList && !isURLInUserList);
+    return !isURLInUserList;
 }
