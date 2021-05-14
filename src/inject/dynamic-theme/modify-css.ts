@@ -170,6 +170,7 @@ function getModifiedScrollbarStyle(theme: Theme) {
         colorThumbActive = hslToString(lighten(0.2));
     }
     lines.push('::-webkit-scrollbar {');
+    lines.push(`    display: none;`)
     lines.push(`    background-color: ${colorTrack};`);
     lines.push(`    color: ${colorIcons};`);
     lines.push('}');
